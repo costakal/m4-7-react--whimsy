@@ -1,6 +1,7 @@
 import React from "react";
 
 import avatar from "../assets/carmen-sandiego.png";
+import moment from "moment";
 
 export const TweetContext = React.createContext(null);
 
@@ -12,6 +13,8 @@ export const TweetProvider = ({ children }) => {
   let isRetweetedByCurrentUser = false;
   let isLikedByCurrentUser = false;
 
+  const date = moment().format("h:mm A  - MMMM Do, YYYY");
+
   return (
     <TweetContext.Provider
       value={{
@@ -21,6 +24,7 @@ export const TweetProvider = ({ children }) => {
         avatarSrc,
         isRetweetedByCurrentUser,
         isLikedByCurrentUser,
+        date,
       }}
     >
       {children}
