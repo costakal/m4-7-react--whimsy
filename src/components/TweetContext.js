@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import avatar from "../assets/carmen-sandiego.png";
 import moment from "moment";
@@ -6,6 +6,11 @@ import moment from "moment";
 export const TweetContext = React.createContext(null);
 
 export const TweetProvider = ({ children }) => {
+  const [numOfLikes, setNumOfLikes] = useState(460);
+  const [numOfRetweets, setNumOfRetweets] = useState(65);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isRetweeted, setIsRetweeted] = useState(false);
+
   const tweetContents = "Where in the world am I?";
   const displayName = "Carmen Sandiego ✨";
   const username = "carmen-sandiego";
@@ -25,6 +30,10 @@ export const TweetProvider = ({ children }) => {
         isRetweetedByCurrentUser,
         isLikedByCurrentUser,
         date,
+        numOfLikes,
+        numOfRetweets,
+        isLiked,
+        isRetweeted,
       }}
     >
       {children}

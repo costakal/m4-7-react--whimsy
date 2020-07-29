@@ -4,14 +4,22 @@ import styled from "styled-components";
 import Header from "./Header";
 import ActionBar from "./ActionBar";
 import { TweetContext } from "../TweetContext";
+import Stat from "./Stat";
 
 const Tweet = () => {
-  const { tweetContents, date } = useContext(TweetContext);
+  const { tweetContents, date, numOfLikes, numOfRetweets } = useContext(
+    TweetContext
+  );
   return (
     <Wrapper>
       <Header />
       <TweetContents>{tweetContents}</TweetContents>
       <Timestamp>{date}</Timestamp>
+      <Divider />
+      <Stats>
+        <Stat data={numOfLikes} type={"Likes"} />
+        <Stat data={numOfRetweets} type={"Retweets"} />
+      </Stats>
       <Divider />
       <ActionBar />
       <Divider />
