@@ -15,10 +15,26 @@ export const TweetProvider = ({ children }) => {
   const displayName = "Carmen Sandiego ✨";
   const username = "carmen-sandiego";
   const avatarSrc = avatar;
-  let isRetweetedByCurrentUser = false;
-  let isLikedByCurrentUser = false;
 
   const date = moment().format("h:mm A  - MMMM Do, YYYY");
+
+  const handleToggleLike = () => {
+    setIsLiked(!isLiked);
+    if (!isLiked) {
+      setNumOfLikes(numOfLikes + 1);
+    } else {
+      setNumOfLikes(numOfLikes - 1);
+    }
+  };
+
+  const handleToggleRetweet = () => {
+    setIsRetweeted(!isRetweeted);
+    if (!isRetweeted) {
+      setNumOfRetweets(numOfRetweets + 1);
+    } else {
+      setNumOfRetweets(numOfRetweets - 1);
+    }
+  };
 
   return (
     <TweetContext.Provider
@@ -27,13 +43,13 @@ export const TweetProvider = ({ children }) => {
         displayName,
         username,
         avatarSrc,
-        isRetweetedByCurrentUser,
-        isLikedByCurrentUser,
         date,
         numOfLikes,
         numOfRetweets,
         isLiked,
         isRetweeted,
+        handleToggleLike,
+        handleToggleRetweet,
       }}
     >
       {children}
